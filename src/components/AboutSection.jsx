@@ -64,7 +64,7 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href="/cv.pdf"
+                href="/Ferdyan Darwis CV ATS.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-6 py-3 rounded-full border border-primary text-primary font-medium hover:bg-primary/10 hover:shadow-[0_0_15px_rgba(var(--primary-rgb),0.3)] transition-all duration-300 flex items-center gap-2"

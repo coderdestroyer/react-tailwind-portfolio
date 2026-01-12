@@ -23,13 +23,12 @@ export const ContactSection = () => {
 
     setIsSubmitting(true);
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
     emailjs
-      .sendForm(
-        'service_wsqxt6j', 
-        'template_y83dojq', 
-        formRef.current, 
-        { publicKey: '0-UElZb-yOx-u_7Q8' }
-      )
+      .sendForm(serviceId, templateId, formRef.current, { publicKey: publicKey })
       .then(
         () => {
           toast({
@@ -37,7 +36,7 @@ export const ContactSection = () => {
             description: "Thank you for your message. I'll get back to you soon.",
           });
           setIsSubmitting(false);
-          e.target.reset(); // Reset form setelah sukses
+          e.target.reset(); // Membersihkan form setelah sukses
         },
         (error) => {
           toast({
@@ -46,10 +45,11 @@ export const ContactSection = () => {
             variant: "destructive",
           });
           setIsSubmitting(false);
-          console.error('FAILED...', error.text);
+          console.error('EMAILJS FAILED...', error);
         },
       );
   };
+  
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
